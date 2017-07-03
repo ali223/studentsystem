@@ -9,12 +9,15 @@ use StudentsApp\Models\Student;
 use StudentsApp\View;
 use StudentsApp\Validators\FilterInputTrait;
 use StudentsApp\Validators\FormValidator;
+use StudentsApp\Validators\StudentValidator;
 use StudentsApp\Utilities\SessionUtility;
 use StudentsApp\Utilities\RedirectTrait;
+use StudentsApp\Utilities\PostDataTrait;
+
 
 class StudentsController 
 {
-	use FilterInputTrait, RedirectTrait;
+	use FilterInputTrait, RedirectTrait, PostDataTrait;
 
 	protected $view;
 	protected $studentsRepository;
@@ -85,24 +88,13 @@ class StudentsController
 			return;
 		}
 
-		$student = new Student();
-
-		$student->setName($this->filterInput(isset($_POST['name']) ? $_POST['name'] : ''));
-		$student->setEmail($this->filterInput(isset($_POST['email']) ? $_POST['email'] : ''));
-		$student->setCourses($this->filterInput(isset($_POST['courses']) ? $_POST['courses'] : []));
-
-		$formValidator = new FormValidator;		
-
-		$formValidator->validateRequired('Student Name', $student->getName());
-		$formValidator->validateRequired('Student Email', $student->getEmail());
-		$formValidator->validateEmail('Student Email', $student->getEmail());		
-		$formValidator->validateRequired('Student Courses', $student->getCourses());
-
-		$formValidator->validateMaxLength('Student Name', $student->getName(), 255);
-		$formValidator->validateMaxLength('Student Email', $student->getEmail(), 255);
+		$student = $this->createStudentObjectFromPost();
 
 
-		$errorsList = $formValidator->getValidationErrors();
+		$studentValidator = new StudentValidator(new FormValidator());
+
+
+		$errorsList = $studentValidator->validate($student);
 
 		if($errorsList) {
 	        $this->view->setContentFile("views/students/create.php");
@@ -126,4 +118,22 @@ class StudentsController
 
 
 	}
+
+	protected function createStudentObjectFromPost()
+	{
+
+		$student = new Student();
+
+		$student->setName($this->filterInput($this->getPostVariable('name')));
+
+		$student->setEmail($this->filterInput($this->getPostVariable('email')));
+
+		$student->setCourses($this->filterInput($this->getPostArray('courses')));
+
+		return $student;
+
+
+	}
+
+
 }

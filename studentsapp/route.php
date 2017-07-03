@@ -33,6 +33,7 @@ class Route
 
 			return $this->callAction($controller, $action);
 		} 
+		
 		return $this->callAction("PagesController", "showError");
 	}
 
@@ -45,6 +46,7 @@ class Route
 			$controller = $this->makeController('PagesController');
 			$action = 'showError';
 		}
+
 		return $controller->$action();
 	}
 
