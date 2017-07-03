@@ -16,13 +16,13 @@
     </div>
     <div class="row">  
         <div class="col-md-10 col-md-offset-1">        	        
-		    <table class="table">
+		    <table class="table table-striped table-hover">
 		    	<thead>
 		    		<tr>
-		    			<th>Course Title</th>
-		    			<th>Course Description</th>
-		    			<th>Students</th>
-		    			<th></th>
+		    			<th width="20%">Course Title</th>
+		    			<th width="60%">Course Description</th>
+		    			<th width="10%">Students</th>
+		    			<th width="10%"></th>
 		    		</tr>
 		    	</thead>
 
@@ -34,7 +34,7 @@
 		                    	  <?= count($course->getStudents()) == 1 ? 'Student' : 'Students'?> 
 		                    	 </em>
 		                    </td>
-		                    <td> <a href="viewcoursestudents?id=<?= $course->getId() ?>" class="btn btn-default btn-sm">View Students</a></td>
+		                    <td> <a href="viewcoursestudents?id=<?= $course->getId() ?>" class="btn btn-primary btn-sm">View Students</a></td>
 		            </tr>
 		       <?php endforeach ?>
 		    </table>

@@ -35,7 +35,7 @@
 				</div>
 			<?php endif ?>		
 		    <hr>
-		    <a href="viewcourses" class="btn btn-default">Back to Courses List</a>
+		    <a href="viewcourses" class="btn btn-primary">Back to Courses List</a>
 	   </div>
 	</div>
 </div>

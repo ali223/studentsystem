@@ -18,7 +18,7 @@
     	</div>
     </div>
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-8 col-md-offset-2 well">
 			<form method = "POST" action = "savestudent">
 				<div class="form-group">
 					<label for="name">Student Name:</label>
@@ -52,7 +52,7 @@
 				</div>	
 				<hr>							
 				<div class="form-group">
-					<input type="submit" value="Add New Student" class="btn btn-success">					
+					<input type="submit" value="Add New Student" class="btn btn-primary">					
 				</div>				
 
 			</form>

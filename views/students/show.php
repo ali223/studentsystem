@@ -40,7 +40,7 @@
 
 			    </table>
 		    <hr>
-		    <a href="viewstudents" class="btn btn-default">Back to Students List</a>
+		    <a href="viewstudents" class="btn btn-primary">Back to Students List</a>
 	   </div>
 	</div>
 </div>

@@ -14,7 +14,7 @@
     </div>
     <div class="row">  
         <div class="col-md-8 col-md-offset-2">        	        
-		    <table class="table">
+		    <table class="table table-striped table-hover">
 		    	<thead>
 		    		<tr>
 		    			<th>Student Name</th>
@@ -27,7 +27,7 @@
 		            <tr> 
 		                    <td> <?= $student->getName() ?> </td>
 		                    <td> <?= $student->getEmail() ?> </td>
-		                    <td><a href="viewstudentdetails?id=<?= $student->getId() ?>" class="btn btn-default btn-sm">View Details</a></td>
+		                    <td><a href="viewstudentdetails?id=<?= $student->getId() ?>" class="btn btn-primary btn-sm">View Details</a></td>
 		            </tr>
 		       <?php endforeach ?>
 		    </table>
